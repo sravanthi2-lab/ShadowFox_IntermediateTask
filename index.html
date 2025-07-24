@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ShopMate - Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>ShopMate</h1>
+    <nav>
+      <a id="cartCount" href="cart.html">Cart: 0 items</a>
+      <button id="logoutBtn" class="logout-button">Logout</button>
+    </nav>
+  </header>
+ <section class="filters">
+    <h2>Filters</h2>
+    <div class="filter-group">
+      <label for="priceFilter">Max Price:</label>
+      <input type="range" id="priceFilter" min="0" max="500" value="500" />
+      <span id="priceValue">$500</span>
+    </div>
+
+    <div class="filter-group">
+      <label for="categoryFilter">Category:</label>
+      <select id="categoryFilter">
+        <option value="">All</option>
+        <option value="clothing">Clothing</option>
+        <option value="electronics">Electronics</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <label for="sortOption">Sort By:</label>
+      <select id="sortOption">
+        <option value="">Default</option>
+        <option value="priceLow">Price: Low to High</option>
+        <option value="priceHigh">Price: High to Low</option>
+      </select>
+    </div>
+  </section>
+
+  <section class="products" id="productList"></section>
+
+  <script src="script.js"></script>
+  <script>
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      alert("Please log in first.");
+      window.location.href = "login.html";
+    }
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("user");
+      alert("You have been logged out.");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>
+
+
+

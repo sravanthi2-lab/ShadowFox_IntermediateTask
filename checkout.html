@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - ShopMate</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Checkout</h1>
+    <a href="cart.html">Back to Cart</a>
+  </header>
+
+  <section>
+    <h2>Order Summary</h2>
+    <p id="billAmount">Total: $0</p>
+  </section>
+
+  <section>
+    <h2>Payment Details</h2>
+    <form id="checkoutForm">
+      <input type="text" placeholder="Full Name" required><br>
+      <input type="text" placeholder="Address" required><br>
+      <input type="email" placeholder="Email" required><br>
+      <input type="text" placeholder="Card Number" maxlength="16" required><br>
+      <input type="text" placeholder="Expiry Date (MM/YY)" required><br>
+      <input type="text" placeholder="CVV" maxlength="3" required><br>
+      <button type="submit">Confirm Payment</button>
+    </form>
+  </section>
+
+  <script>
+    // Show Bill Amount
+    const totalBill = localStorage.getItem("billAmount") || 0;
+    document.getElementById("billAmount").textContent = "Total: $" + totalBill;
+
+    // Confirm Payment
+    document.getElementById("checkoutForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      alert("Payment successful! Your order is confirmed.");
+      localStorage.removeItem("cart");
+      localStorage.removeItem("billAmount");
+      window.location.href = "index.html";
+    });
+  </script>
+</body>
+</html>
+
+
